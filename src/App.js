@@ -96,49 +96,68 @@ export default function App() {
 
   return (
     <>
-      <div className="persona__container">
-        <input
-          type="text"
-          className="persona__busqueda"
-          placeholder="Buscar un personaje"
-          ref={inputSearchRef}
-          onChange={(event) => handleChangeBusqueda(event)}
-          onKeyDown={(event) => handleKeyDown(event)}
-        />
+      <div className="persona__container-container">
+        <div className="persona__container">
+          <h1>StarWars Character List</h1>
+          <p>React App - Starwars characters, details and search</p>
+          <p></p>
+          <input
+            type="text"
+            className="persona__busqueda"
+            placeholder="Buscar un personaje"
+            ref={inputSearchRef}
+            onChange={(event) => handleChangeBusqueda(event)}
+            onKeyDown={(event) => handleKeyDown(event)}
+          />
 
-        <ul className="persona__listado">
-          {people &&
-            people.results.map(({ name, url }) => {
-              return (
-                <li key={name} onClick={() => handleClick(url)}>
-                  {name}
-                </li>
-              );
-            })}
-        </ul>
+          <ul className="persona__listado">
+            {people &&
+              people.results.map(({ name, url }) => {
+                return (
+                  <li key={name} onClick={() => handleClick(url)}>
+                    {name}
+                  </li>
+                );
+              })}
+          </ul>
 
-        <section className="persona__detalle">
-          {detail && (
-            <div>
-              <h1>{detail.name}</h1>
-              <p>Estatura: {detail.height}</p>
-              <p>Gender: {detail.gender}</p>
-            </div>
-          )}
-        </section>
+          <section className="persona__detalle">
+            {detail && (
+              <div>
+                <h1>{detail.name}</h1>
+                <hr style={{ margin: "10px 0" }} />
+                <p>
+                  <strong>Height:</strong> {detail.height} cm.
+                </p>
+                <p>
+                  <strong>Mass:</strong> {detail.mass} kg.
+                </p>
+                <p>
+                  <strong>Eye color:</strong> {detail.eye_color}
+                </p>
+                <p>
+                  <strong>Gender:</strong> {detail.gender}
+                </p>
+                <p>
+                  <strong>Birthday:</strong> {detail.birth_year}
+                </p>
+              </div>
+            )}
+          </section>
 
-        <section className="navegacion">
-          <button onClick={() => handlePage(-1)}>Previous</button>
-          {currentPage}
-          <button onClick={() => handlePage(1)}>Next</button>
-        </section>
+          <section className="navegacion">
+            <button onClick={() => handlePage(-1)}>Previous</button>
+            {currentPage}
+            <button onClick={() => handlePage(1)}>Next</button>
+          </section>
+        </div>
       </div>
 
       <footer>
         <h3>Star Wars App by Isaí Madueño</h3>
         <p>
           React app using{" "}
-          <a href="https://swapi.dev/" target="_blank">
+          <a href="https://swapi.dev/" target="_blank" rel="noreferrer">
             SWAPI API
           </a>{" "}
           the star wars api
