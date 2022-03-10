@@ -14,4 +14,4 @@ Created with CodeSandbox
 
 # Screen shots
 
-![image](https://user-images.githubusercontent.com/29583359/157600966-46135577-08e9-4123-82c4-7d7c72fec28e.png)
+![image](https://user-images.githubusercontent.com/29583359/157762275-f1eeefd4-57eb-4c6b-b5a0-f81620e1b4eb.png)
