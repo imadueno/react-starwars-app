@@ -1,0 +1,78 @@
+:root {
+  --border-color: #b3b3b3;
+  --border-radius: 5px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.html {
+  font-family: sans-serif;
+  color: #323232;
+}
+
+.persona__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.persona__busqueda {
+  padding: 15px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  color: #323232;
+}
+
+ul {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+ul li {
+  list-style: none;
+  padding: 10px 0 10px 10px;
+  cursor: pointer;
+}
+
+ul li:hover {
+  background-color: steelblue;
+  color: white;
+}
+
+ul li:not(:last-child) {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.persona__detalle {
+  padding: 15px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.navegacion {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navegacion button {
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: lightseagreen;
+  color: white;
+}
+
+footer {
+  /* position: fixed;
+  bottom: 0;
+  left: 0; */
+  width: 100%;
+  height: auto;
+  background-color: rgb(32, 32, 32);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
