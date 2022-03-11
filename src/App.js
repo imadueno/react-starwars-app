@@ -6,6 +6,7 @@ import {
   searchCharacter,
   getPeopleByPage
 } from "./api/people";
+import Loader from "./Loader";
 
 export default function App() {
   // constantes
@@ -20,11 +21,15 @@ export default function App() {
   // paginación
   const [totalRegistros, setTotalRegistros] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  // loading
+  const [isLoading, setIsLoading] = useState(false);
 
   // efecto - TODAS las personas
   useEffect(() => {
+    setIsLoading(true);
     getPeople()
       .then((data) => {
+        setIsLoading(false);
         setPeople(data);
         setTotalRegistros(data.count);
       })
@@ -33,8 +38,10 @@ export default function App() {
 
   // efecto - DETALLE una persona
   useEffect(() => {
+    setIsLoading(true);
     getPeopleDetails(currentCharacter)
       .then((data) => {
+        setIsLoading(false);
         setDetail(data);
         setTotalRegistros(data.count);
       })
@@ -43,8 +50,10 @@ export default function App() {
 
   // efecto - PAGINACION
   useEffect(() => {
+    setIsLoading(true);
     getPeopleByPage(currentPage)
       .then((data) => {
+        setIsLoading(false);
         setPeople(data);
         setTotalRegistros(data.count);
       })
@@ -62,10 +71,16 @@ export default function App() {
     if (event.key !== "Enter") return;
 
     // vaciar input y vaciar detalles
-    inputSearchRef.current.value = "";
+    // inputSearchRef.current.value = "";
     setDetail({});
 
+    if (inputBusqueda === "") {
+      setCurrentPage(1);
+      return;
+    }
+
     // realizamos la busqueda con el servicio
+    setIsLoading(true);
     searchCharacter(inputBusqueda)
       .then((data) => {
         setPeople(data);
@@ -75,6 +90,7 @@ export default function App() {
         }
       })
       .catch((error) => console.log(error));
+    setIsLoading(false);
   };
 
   // observamos en contenido del input busqueda
@@ -96,6 +112,7 @@ export default function App() {
 
   return (
     <>
+      {isLoading && <Loader />}
       <div className="persona__container-container">
         <div className="persona__container">
           <h1>StarWars Character List</h1>

@@ -9,13 +9,16 @@
   box-sizing: border-box;
 }
 
-.body {
-  /* font-family: "Fredoka", sans-serif;
-  font-family: "Open Sans", sans-serif; */
-  color: #8f1414;
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  text-align: center;
 }
 
 .persona__container {
+  user-select: none;
   display: flex;
   flex-direction: column;
   gap: 1rem;
